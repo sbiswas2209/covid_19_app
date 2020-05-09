@@ -50,6 +50,7 @@ flutter:
     - images/logo.png
     - images/earth.png
     - images/country.png
+    - images/alert.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

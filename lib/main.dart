@@ -3,6 +3,7 @@
 
 
 
+import 'package:covid_app/pages/alet.dart';
 import 'package:covid_app/pages/country_data.dart';
 import 'package:covid_app/pages/earth_data.dart';
 import 'package:covid_app/pages/error.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     StatisticsPage.tag: (context) => StatisticsPage(),
     EarthData.tag: (context) => EarthData(),
     CountryDataPage.tag: (context) => CountryDataPage(),
+    AlertPage.tag: (context) => AlertPage(),
   };
 
 

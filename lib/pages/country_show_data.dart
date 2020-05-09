@@ -1,4 +1,5 @@
 import 'package:covid_app/models/country_data.dart';
+import 'package:covid_app/pages/alet.dart';
 import 'package:flutter/material.dart';
 
 class CountryShowData extends StatelessWidget {
@@ -10,7 +11,8 @@ class CountryShowData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    try{
+      return Card(
       color: Colors.grey[900],
       margin: EdgeInsets.all(20),
       child: Center(
@@ -19,7 +21,7 @@ class CountryShowData extends StatelessWidget {
             children: <Widget>[
               Image(
                 image: NetworkImage('https://www.countryflags.io/${this.iso}/shiny/64.png') ,
-                height: 200,
+                height: 150,
               ),
               SizedBox(height: 10,),
               Text('Confirmed Cases',
@@ -29,11 +31,23 @@ class CountryShowData extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('${data[data.length-1].confirmed}' , 
-                style: TextStyle(
-                  color: Colors.orange,
-                  fontSize: 20,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('${data[data.length-1].confirmed}' , 
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontSize: 20,
+                    ),
+                  ),
+                  SizedBox(width:5),
+                  Icon(
+                      (data[data.length-1].confirmed==data[data.length-2].confirmed) ? 
+                            Icons.remove : (data[data.length-1].confirmed>data[data.length-2].confirmed) ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                      color: (data[data.length-1].confirmed==data[data.length-2].confirmed) ? Colors.orange : 
+                            (data[data.length-1].confirmed>data[data.length-2].confirmed) ? Colors.red : Colors.lightGreen,
+                    ),
+                ],
               ),
               SizedBox(height: 10,),
               Text('Deaths',
@@ -43,11 +57,23 @@ class CountryShowData extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('${data[data.length-1].deaths}' , 
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 20,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('${data[data.length-1].deaths}' , 
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontSize: 20,
+                    ),
+                  ),
+                  SizedBox(width:5),
+                  Icon(
+                      (data[data.length-1].deaths==data[data.length-2].deaths) ? 
+                            Icons.remove : (data[data.length-1].deaths>data[data.length-2].deaths) ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                      color: (data[data.length-1].deaths==data[data.length-2].deaths) ? Colors.orange : 
+                            (data[data.length-1].deaths>data[data.length-2].deaths) ? Colors.red : Colors.lightGreen,
+                    ),
+                ],
               ),
               SizedBox(height:10,),
               Text('Mortality rate (Aprox.)' ,
@@ -71,11 +97,23 @@ class CountryShowData extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('${data[data.length-1].recovered}' , 
-                style: TextStyle(
-                  color: Colors.lightGreen,
-                  fontSize: 20,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('${data[data.length-1].recovered}' , 
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontSize: 20,
+                    ),
+                  ),
+                  SizedBox(width:5),
+                  Icon(
+                      (data[data.length-1].recovered==data[data.length-2].recovered) ? 
+                            Icons.remove : (data[data.length-1].recovered>data[data.length-2].recovered) ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                      color: (data[data.length-1].recovered==data[data.length-2].recovered) ? Colors.orange : 
+                            (data[data.length-1].recovered>data[data.length-2].deaths) ? Colors.red : Colors.lightGreen,
+                    ),
+                ],
               ),
               SizedBox(height:10,),
               Text('Recovery rate (Aprox.)' ,
@@ -95,5 +133,9 @@ class CountryShowData extends StatelessWidget {
           ),
       ),
     );
+    }
+    catch(e){
+      return AlertPage();
+    }
   }
 }
